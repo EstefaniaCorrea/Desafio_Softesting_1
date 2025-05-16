@@ -2,6 +2,10 @@ package pages;
 
 public class AmazonSearchPages extends BasePages {
 
+    private String barraBusqueda = "field-keywords"; //Selector por Nombre
+    private String btnBuscar = "nav-search-submit-button"; //Selector por ID
+    private String btnPagina2 = "//a[@aria-label='Ir a la página 2']";// Selector XPath
+
     public AmazonSearchPages() {
         super(driver);
     }
@@ -16,5 +20,16 @@ public class AmazonSearchPages extends BasePages {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    // Metodo que ingresa datos en la barra de busqueda
+    public void buscarProducto(String busqueda){
+        escribirCampo(barraBusqueda, busqueda);
+        clicarElementoId(btnBuscar);
+    }
+
+    // Metodo para ir a una pagina 
+    public void irPagina(){
+        clicarPagina(btnPagina2);
     }
 }
